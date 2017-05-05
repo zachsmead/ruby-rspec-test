@@ -51,7 +51,6 @@ class Change
 			total = total % coin
 		end
 
-
 	 	change
 	end
 
