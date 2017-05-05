@@ -2,9 +2,9 @@ require 'rspec'
 
 class Change
 	def make_change(number)
-		coins = []
-		inputs = [25, 10, 5, 1]
 		total = number
+		coins = [25, 10, 5, 1]
+		change = []
 
 			
 		# while total >= 25
@@ -44,15 +44,15 @@ class Change
 		# end
 
 
-		values.each do |value|
-			(total/value).floor.times do
-				coins << value
+		coins.each do |coin|
+			(total/coin).floor.times do
+				change << coin
 			end
-			total = total % value
+			total = total % coin
 		end
 
 
-	 	coins
+	 	change
 	end
 
 
