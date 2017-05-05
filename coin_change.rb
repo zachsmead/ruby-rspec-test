@@ -3,33 +3,56 @@ require 'rspec'
 class Change
 	def make_change(number)
 		coins = []
+		inputs = [25, 10, 5, 1]
 		total = number
 
-		while total > 0
 			
-			while total % 5 != 0
-				coins << 1
-				total -= 1
-			end
+		# while total >= 25
+		# 	coins << 25
+		# 	total -= 25
+		# end
 
-			while total % 10 != 0 
-				coins << 5
-				total -= 5
-			end
+		# while total > 10 
+		# 	coins << 10
+		# 	total -= 10
+		# end
 
-			while total % 25 != 0
-				coins << 10
-				total -= 10
-			end
+		# while total > 5
+		# 	coins << 5
+		# 	total -= 5
+		# end
 
-			if (total >= 25) && (total % 25 == 0)
-				coins << 25
-				total -= 25
-			end
+		# until total == 0
+		# 	coins << 1
+		# 	total -= 1
+		# end
 
-			
+		# while total > 0 
+		# 	if total >= 25
+		# 		coins << 25
+		# 		total -= 25
+		# 	elsif 25 > total && total >= 10
+		# 		coins << 10
+		# 		total -=10
+		# 	elsif 10 > total && total >= 5
+		# 		coins << 5
+		# 		total -= 5
+		# 	else
+		# 		coins << 1
+		# 		total -= 1
+		# 	end		
+		# end
+
+
+		values.each do |value|
+			(total/value).floor.times do
+				coins << value
+			end
+			total = total % value
 		end
-		coins.reverse
+
+
+	 	coins
 	end
 
 
@@ -63,6 +86,8 @@ RSpec.describe Change do
 		it 'should return array of 25s,10s,5s,1a when given a number' do
 			change = Change.new
 			expect(change.make_change(42)).to eq([25,10,5,1,1])
+			expect(change.make_change(51)).to eq([25,25,1])
+			expect(change.make_change(136)).to eq([25,25,25,25,25,10,1])
 		end
 	end
 end
