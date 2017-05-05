@@ -7,43 +7,46 @@ class RomanNumeral
 		# numerals = ['C', 'XC', 'L', 'XL', 'V', 'IV', 'I']
 		# numeral_values = [100, 90, 50, 40, 5, 4, 1]
 
-		# numeral_pairs = { 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'V' => 5, 'IV' => 4, 'I' => 1 }
+		numeral_pairs = { 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1 }
 
-		while number > 0
-			if number >= 100
-				array << 'C'
-				number -= 100
-			elsif number == 90
-				array << 'XC'
-				number -= 90
-			elsif number >= 50
-				array <<  'L'
-				number -= 50
-			elsif number == 40
-				array << 'XL'
-				number -= 40
-			elsif number >= 10
-				array << 'X'
-				number -= 10
-			elsif number >= 5
-				array << 'V'
-				number -= 5
-			elsif number == 4
-				array << 'IV'
-				number -=4
-			elsif number >= 1
-				array << 'I'
-				number -= 1
-			end
-
-		end
-		return array.join('')
-
-		# numeral_values.each do |numeral_value|
-		# 	(number/numeral_value).floor.times do
-		# 		array << 
+		# while number > 0
+		# 	if number >= 100
+		# 		array << 'C'
+		# 		number -= 100
+		# 	elsif number == 90
+		# 		array << 'XC'
+		# 		number -= 90
+		# 	elsif number >= 50
+		# 		array <<  'L'
+		# 		number -= 50
+		# 	elsif number == 40
+		# 		array << 'XL'
+		# 		number -= 40
+		# 	elsif number >= 10
+		# 		array << 'X'
+		# 		number -= 10
+		# 	elsif number >= 5
+		# 		array << 'V'
+		# 		number -= 5
+		# 	elsif number == 4
+		# 		array << 'IV'
+		# 		number -=4
+		# 	elsif number >= 1
+		# 		array << 'I'
+		# 		number -= 1
 		# 	end
+
 		# end
+		# return array.join('')
+
+		numeral_pairs.each do |numeral, value|
+			(number/value).floor.times do
+				array << numeral
+			end
+			number = number % value
+		end
+
+		return array.join('')
 	end
 
 
